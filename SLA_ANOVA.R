@@ -17,3 +17,9 @@ ANOVA <- lm (value~City, data = SLA)
 summary(ANOVA)
 
 Anova(ANOVA, type = "2")
+
+summary <- SLA %>% group_by(City) %>% summarise(SLA.avg = mean(value),
+                                                SLA.sd = sd(value),
+                                                SLA.n = length(value),
+                                                SLA.se = sd(value)/sqrt(n()))
+summary
